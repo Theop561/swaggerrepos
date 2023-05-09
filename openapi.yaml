@@ -1,0 +1,393 @@
+openapi: 3.0.0
+info: 
+  version: '1.0.0'
+  title: wicrypt
+  description: 'An api that allow users to obtaion extisting 
+     information of wicrypts or post info of new wicrypts'
+  termsOfServices: http"//smartbear.com/terms-of-use
+  contact:
+    name: kashav
+    url: smartBear.com
+    email: keshav.vasudean@smartbear.com
+  license:
+    name: smartBear License
+    url: hrrp://license.foo.com
+  
+servers:
+  - url: https://dev.foo.com/v1
+    description: Dev Server
+    
+  - url: https://prod.foo.com/v1
+    description: Prod Server
+    
+paths:
+  /campaign:
+    get:
+      description: Obtain information about campaign from
+        the wicrypt database
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of campaigns returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 20
+            example: 15
+            
+        - name: pageLimit
+          in: query
+          description: The pages to return campaigns info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            example: 2
+            
+      responses:
+       200:
+         description: Successful pull of campaign info
+         content:
+           application/json:
+             schema:
+                 type: array
+                 items:
+                   properties:
+                     id:
+                       type: integer
+                       example: 4
+                    
+                     Bootleg:
+                       type: string
+                       example: Budget
+                       
+                     Duration:
+                       type: integer
+                       example: 128 days left
+                       
+                     Budget:
+                        type: integer
+                        example: $2k/$4k
+                        
+                     Preferred network:
+                         type: string
+                         example: Add a Network
+                         
+                     Preferred country:
+                          type: string 
+                          example: Add a country
+                          
+    post:
+      description: Create a new Campaign in the database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+               type: object
+               properties:
+                 id:
+                   type: integer
+                   example: 4
+                    
+                 Bootleg:
+                   type: string
+                   example: Budget
+                       
+                 Amount:
+                   type: number
+                   example: $
+                       
+                 duration:
+                   type: string
+                   example: 1 week, one month
+                   
+                 My Adverts:
+                    type: string
+                    example: Add an advert
+                    
+
+  /wallet:
+    get:
+      description: Obtain information about wallet from
+        the wicrypt database
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of wallet returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 20
+            example: 15
+            
+        - name: pageLimit
+          in: query
+          description: The pages to return wallet info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            example: 2
+            
+      responses:
+       200:
+         description: Successful pull of wallet info
+         content:
+           application/json:
+             schema:
+                 type: array
+                 items:
+                   properties:
+                     id:
+                       type: integer
+                       example: 4
+                    
+                     wallet funded:
+                       type: string
+                       example: Your account has been funded with 
+                         the amount below
+                      
+                     wallet amount:
+                       type: number
+                       example: $ 300.69
+                       
+    post:
+      description: Create a new wallet in the databbase
+      requestBody:
+         required: true
+         content:
+           application/json:
+             schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                    
+                  fund wallet:
+                    type: string
+                    example: pay Via Card, 
+                    
+                  preferred payment:
+                     type: string
+                     example: pay via xendbridge,
+                     
+                  payment method:
+                      type: string 
+                      example: pay via paypal
+                        
+  /account:
+    get:
+      description: Obtain information about acount from
+        the wicrypt database
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of account returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 20
+            example: 15
+            
+        - name: pageLimit
+          in: query
+          description: The pages to return account info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            example: 2
+            
+      responses:
+       200:
+         description: Successful pull of account info
+         content:
+           application/json:
+             schema:
+                 type: array
+                 items:
+                   properties:
+                     id:
+                       type: integer
+                       example: 4
+                    
+                     personal Details:
+                        type: string
+                        example: Adayemi Adam
+                         
+                     Email:
+                         type: string 
+                         example: AdayemiAdam@gmail.com
+                         
+    post:
+      description: Create a new account in the databbase
+      requestBody:
+         required: true
+         content:
+           application/json:
+             schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                    
+                  First Name:
+                    type: string
+                    example: Adayemi
+                    
+                  Last Name:
+                    type: string
+                    example: Adam
+                     
+                  Buisness Name:
+                    type: string
+                    example: Adam
+                      
+                  Email:
+                     type: string 
+                     example: AdayemiAdam@gmail.com
+                     
+                  Phone Number:
+                     type: integer
+                     example: +2348189031685
+                     
+  /network:
+    get:
+      description: Obtain information about network from
+        the wicrypt database
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of network returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 20
+            example: 15
+            
+        - name: pageLimit
+          in: query
+          description: The pages to return network info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            example: 2
+            
+      responses:
+       200:
+         description: Successful pull of network info
+         content:
+           application/json:
+             schema:
+                 type: array
+                 items:
+                   properties:
+                     id:
+                       type: integer
+                       example: 4
+                    
+                     Add a Network:
+                       type: string
+                       example: Bee Mobile x
+                       
+    post:
+      description: Create a new network in the databbase
+      requestBody:
+         required: true
+         content:
+           application/json:
+             schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                    
+                  bee:
+                    type: string
+                    example: Bee Mobile Network, 
+                    
+                  wicrypt:
+                     type: string
+                     example: Wicrypt Network
+                     
+                  enugu wifi:
+                      type: string
+                      example: Enugu-State Network
+                      
+  /country:
+    get:
+      description: Obtain information about county from
+        the wicrypt database
+      parameters:
+        - name: bodyLimit
+          in: query
+          description: The amount of country returned
+          schema:
+            type: integer
+            minimum: 10
+            maximum: 20
+            example: 15
+            
+        - name: pageLimit
+          in: query
+          description: The pages to return country info
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 5
+            example: 2
+            
+      responses:
+       200:
+         description: Successful pull of country info
+         content:
+           application/json:
+             schema:
+                 type: array
+                 items:
+                   properties:
+                     id:
+                       type: integer
+                       example: 4
+                    
+                     Add a Network:
+                       type: string
+                       example: Bee Mobile x
+                       
+    post:
+      description: Create a new country in the databbase
+      requestBody:
+         required: true
+         content:
+           application/json:
+             schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 4
+                    
+                  Select Country:
+                    type: object 
+                    example: Nigeria,
+                    
+                  Select:
+                    type: object
+                    example: United Kindom
+                    
+                  Search:
+                     type: object
+                     example: USA
+                    
+                  
+                       
+                         
+                         
+                         
+            
+            
